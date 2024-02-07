@@ -13,7 +13,9 @@ pip install -r requirements.txt
 
 ## Run Evaluation
 
-### Code2Code Search
+### Code-to-Code Search
+
+See [data preparation](data/code2code/README.md) before running evaluation scripts.
 
 ```
 bash scripts/run_code2code_search.sh MODEL_NAME SRC_LANG TGT_LANG
@@ -24,7 +26,9 @@ where
 - MODEL_NAME = `[codesage-small|codesage-base|codesage-large]`
 - SRC_LANG and TGT_LANG = `[python|java|c|c++|csharp|ruby|php|go|javascript|typescript]`
 
-### NL2Code Search
+### Text-to-Code Search
+
+See [data preparation](data/nl2code/README.md) before running evaluation scripts.
 
 ```
 bash scripts/run_code2code_search.sh MODEL_NAME SRC_LANG TGT_LANG
@@ -35,7 +39,7 @@ where
 - MODEL_NAME = `[codesage-small|codesage-base|codesage-large]`
 - SRC_LANG and TGT_LANG = `[cosqa|advTest|csn]`
 
-### Classification
+### Code Classification
 
 ```
 # clone detection
