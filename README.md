@@ -65,6 +65,10 @@ bash scripts/run_runtime_error_prediction.sh
 }
 ```
 
+## Contact
+If you have any question regarding our paper or code, please feel free to start an issue or email Dejiao Zhang and Wasi Ahmad (dejiaoz@amazon.com and wuahmad@amazon.com).
+
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
