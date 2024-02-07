@@ -8,7 +8,7 @@ Hantian Ding, Ramesh Nallapati, Dan Roth, Xiaofei Ma, Bing Xiang (* <em>indicate
 
 ## Overview
 <p align="center">
-<img src="static/CodeSage_Key_Ingredients.png" width=500></img>
+<img src="static/CodeSage_Key_Ingredients.png" width=900></img>
 </p>
 An overview of the key ingredients of CodeSage for code representation learning. 
 
