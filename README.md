@@ -1,7 +1,11 @@
 # CodeSage: Code Representation Learning At Scale
 
 This repository contains the data and inference code of the ICLR 2024
-paper "[CodeSage: Code Representation Learning At Scale](https://arxiv.org/abs/2402.01935)."
+paper "[CodeSage: Code Representation Learning At Scale](https://arxiv.org/abs/2402.01935)." 
+
+Work done by Dejiao Zhang*, Wasi Uddin Ahmad*, Ming Tan,
+Hantian Ding, Ramesh Nallapati, Dan Roth, Xiaofei Ma, Bing Xiang (* <em>indicates equal contribution</em>). 
+
 
 ## Environment Setup
 
