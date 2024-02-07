@@ -1,0 +1,7 @@
+torch==1.13.0
+transformers==4.28.1
+sentencepiece
+datasets
+scikit-learn
+prettytable
+tqdm
