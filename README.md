@@ -6,6 +6,11 @@ paper "[CodeSage: Code Representation Learning At Scale](https://arxiv.org/abs/2
 Work done by Dejiao Zhang*, Wasi Uddin Ahmad*, Ming Tan,
 Hantian Ding, Ramesh Nallapati, Dan Roth, Xiaofei Ma, Bing Xiang (* <em>indicates equal contribution</em>). 
 
+## Overview
+<p align="center">
+<img src="static/CodeSage_Key_Ingredients.png" width=500></img>
+</p>
+An overview of the key ingredients of CodeSage for code representation learning. 
 
 ## Environment Setup
 
@@ -70,7 +75,7 @@ bash scripts/run_runtime_error_prediction.sh
 ```
 
 ## Contact
-If you have any question regarding our paper or code, please feel free to start an issue or email Dejiao Zhang and Wasi Ahmad (dejiaoz@amazon.com and wuahmad@amazon.com).
+If you have any question regarding our paper or code, please feel free to start an issue or email Dejiao Zhang (dejiaoz@amazon.com) and Wasi Ahmad (wuahmad@amazon.com).
 
 
 ## Security
