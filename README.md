@@ -61,7 +61,7 @@ bash scripts/run_defect_prediction.sh
 bash scripts/run_runtime_error_prediction.sh
 ```
 
-### Benchmark With The Latest Code Eembedding Models
+### Benchmark 
 Wanna compare CodeSage against the latest embedding model? Check out our code for [benchmarking](benchmark/run_benchmark.py)
 
 ## Citation
