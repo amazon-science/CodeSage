@@ -32,6 +32,7 @@ def benchmark_on_nl2code_search(model_name, resdir):
             src_path = os.path.join(resdir, "nl2code", f"{dataname}_query_embd.jsonl")
             tgt_path = os.path.join(resdir, "nl2code", f"{dataname}_candidate_embd.jsonl")
             eval_nl2code(dataname, src_path, tgt_path)
+            
         else: # CSN
             # for language in ["python", "java", "javascript", "php", "go", "ruby"]:
             for language in ["python", "java", "javascript", "php", "go", "ruby"]:
@@ -44,7 +45,7 @@ def benchmark_on_nl2code_search(model_name, resdir):
 
 if __name__ == "__main__":
 
-    model_name = "openai" #options: [voyage, openai]
+    model_name = "openai" # support cpt-code-001, ada-002, and text-embedding-3, minor changes required when switch between different versions
     resdir = os.path.join(data_root, model_name)
 
     benchmark_on_nl2code_search(model_name, resdir)
