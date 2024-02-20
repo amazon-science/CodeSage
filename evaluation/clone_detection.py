@@ -100,7 +100,9 @@ def main():
     config.problem_type = "single_label_classification"
     config.num_labels = 2
     config.classifier_dropout = None
-    model = AutoModelForSequenceClassification.from_pretrained(args.model_name_or_path, trust_remote_code=True)
+    model = AutoModelForSequenceClassification.from_pretrained(
+        args.model_name_or_path, config=config, trust_remote_code=True
+    )
 
     if args.freeze:
         print("Freezing model parameters")
