@@ -40,7 +40,7 @@ where
 See [data preparation](data/nl2code/README.md) before running evaluation scripts.
 
 ```
-bash scripts/run_code2code_search.sh MODEL_NAME SRC_LANG TGT_LANG
+bash scripts/run_nl2code_search.sh MODEL_NAME DATASET_NAME
 ```
 
 where
