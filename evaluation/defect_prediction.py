@@ -54,7 +54,7 @@ def get_args():
     parser.add_argument("--output_dir", type=str, required=True)
     parser.add_argument("--max_seq_length", type=int, default=1024)
     parser.add_argument("--num_epochs", type=int, default=5)
-    parser.add_argument("--batch_size", type=int, default=16)
+    parser.add_argument("--per_gpu_batch_size", type=int, default=16)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
     parser.add_argument("--freeze", type=str2bool, default=False)
     parser.add_argument("--learning_rate", type=float, default=5e-4)
@@ -137,8 +137,8 @@ def main():
         evaluation_strategy="epoch",
         save_strategy="epoch",
         logging_strategy="epoch",
-        per_device_train_batch_size=args.batch_size,
-        per_device_eval_batch_size=args.batch_size,
+        per_device_train_batch_size=args.per_gpu_batch_size,
+        per_device_eval_batch_size=args.per_gpu_batch_size,
         num_train_epochs=args.num_epochs,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         weight_decay=args.weight_decay,
