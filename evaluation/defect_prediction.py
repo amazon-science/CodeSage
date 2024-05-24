@@ -69,7 +69,6 @@ def get_args():
 
 def compute_metrics(eval_pred):
     predictions, labels = eval_pred
-    predictions = predictions[0]
     predictions = np.argmax(predictions, axis=1)
     f1_macro = f1_score(labels, predictions, average='macro')
     f1_weighted = f1_score(labels, predictions, average='weighted')
