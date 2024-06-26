@@ -162,7 +162,7 @@ def main():
     logger.info("device: %s, n_gpu: %s, seed: %s", device, args.n_gpu, args.seed)
 
     # load model
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path, trust_remote_code=True, add_eos_token=True)
     model = AutoModel.from_pretrained(args.model_name_or_path, trust_remote_code=True)
 
     model.to(args.device)

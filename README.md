@@ -20,6 +20,22 @@ conda activate codesage_eval
 pip install -r requirements.txt
 ```
 
+## Note
+CodeSage has been trained with block-attention. It requires appending the <EOS> token at the end of each sequence to ensure good performance. Below is an example of downloading the model and tokenizer. 
+
+```angular2html
+model = AutoModel.from_pretrained("codesage/codesage-small", trust_remote_code=True)
+tokenizer = AutoTokenizer("codesage/codesage-small", add_eos_token=True, trust_remote_code=True)
+
+inputs = tokenizer.encode("def print_hello_world():\tprint('Hello World!')", return_tensors="pt").to(device)
+
+embedding = model(inputs)[0]
+
+print(f'Dimension of the embedding: {embedding[0].size()}')
+# Dimension of the embedding: torch.Size([14, 1024])
+```
+
+
 ## Run Evaluation
 
 ### Code-to-Code Search
@@ -78,7 +94,7 @@ Wanna compare CodeSage against the latest embedding model? Check out our code fo
 ```
 
 ## Contact
-If you have any question regarding our paper or code, please feel free to start an issue or email Dejiao Zhang (dejiaoz@amazon.com) and Wasi Ahmad (wuahmad@amazon.com).
+If you have any question regarding our paper or code, please feel free to start an issue or email Dejiao Zhang (dejiaozhang@gmail.com) and Wasi Ahmad (wasicse90@gmail.com).
 
 
 ## Security

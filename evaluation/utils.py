@@ -88,12 +88,10 @@ class Code2CodeInputFeatures(object):
 
     def __init__(
             self,
-            code_tokens,
             input_ids,
             index,
             label
     ):
-        self.code_tokens = code_tokens
         self.input_ids = input_ids
         self.index = index
         self.label = label
@@ -101,18 +99,21 @@ class Code2CodeInputFeatures(object):
 
 def convert_code2code_examples_to_features(js, tokenizer, args, lang):
     """convert examples to token ids"""
+
     if "func" in js:
         code = " ".join(remove_comments_and_docstrings(js['func'], lang).split())
     else:
         code = " ".join(remove_comments_and_docstrings(js['code'], lang).split())
 
-    code_tokens = tokenizer.tokenize(code)[:args.code_length - 1]
-    code_tokens = code_tokens + [tokenizer.eos_token]
-    input_ids = tokenizer.convert_tokens_to_ids(code_tokens)
+    token_feat = tokenizer(code,
+                           max_length=args.code_length,
+                           padding="max_length",
+                           truncation=True)
+    input_ids = token_feat["input_ids"]
     padding_length = args.code_length - len(input_ids)
     input_ids += [tokenizer.pad_token_id] * padding_length
 
-    return Code2CodeInputFeatures(code_tokens, input_ids, js["index"], int(js['label']))
+    return Code2CodeInputFeatures(input_ids, js["index"], int(js['label']))
 
 
 class Code2CodeDataset(Dataset):
@@ -146,15 +147,11 @@ class NL2CodeInputFeatures(object):
 
     def __init__(
             self,
-            code_tokens,
             code_ids,
-            nl_tokens,
             nl_ids,
             url,
     ):
-        self.code_tokens = code_tokens
         self.code_ids = code_ids
-        self.nl_tokens = nl_tokens
         self.nl_ids = nl_ids
         self.url = url
 
@@ -163,23 +160,25 @@ def convert_nl2code_examples_to_features(js, tokenizer, args):
     """convert examples to token ids"""
 
     code = ' '.join(js['code_tokens']) if type(js['code_tokens']) is list else ' '.join(js['code_tokens'].split())
-    code_tokens = tokenizer.tokenize(code)[:args.code_length - 1]
-    code_tokens = code_tokens + [tokenizer.eos_token]
-    code_ids = tokenizer.convert_tokens_to_ids(code_tokens)
+    token_feat = tokenizer(code,
+                           max_length=args.code_length,
+                           padding="max_length",
+                           truncation=True)
+    code_ids = token_feat["input_ids"]
     padding_length = args.code_length - len(code_ids)
     code_ids += [tokenizer.pad_token_id] * padding_length
 
     nl = ' '.join(js['docstring_tokens']) if type(js['docstring_tokens']) is list else ' '.join(js['doc'].split())
-    nl_tokens = tokenizer.tokenize(nl)[:args.nl_length - 1]
-    nl_tokens = nl_tokens + [tokenizer.eos_token]
-    nl_ids = tokenizer.convert_tokens_to_ids(nl_tokens)
+    nl_feat = tokenizer(nl,
+                        max_length=args.nl_length,
+                        padding="max_length",
+                        truncation=True)
+    nl_ids = nl_feat["input_ids"]
     padding_length = args.nl_length - len(nl_ids)
     nl_ids += [tokenizer.pad_token_id] * padding_length
 
     return NL2CodeInputFeatures(
-        code_tokens,
         code_ids,
-        nl_tokens,
         nl_ids,
         js['url'] if "url" in js else js["retrieval_idx"]
     )
@@ -217,9 +216,7 @@ class NL2CodeDataset(Dataset):
             for idx, example in enumerate(self.examples[:3]):
                 logger.info("*** Example ***")
                 logger.info("idx: {}".format(idx))
-                logger.info("code_tokens: {}".format([x.replace('\u0120', '_') for x in example.code_tokens]))
                 logger.info("code_ids: {}".format(' '.join(map(str, example.code_ids))))
-                logger.info("nl_tokens: {}".format([x.replace('\u0120', '_') for x in example.nl_tokens]))
                 logger.info("nl_ids: {}".format(' '.join(map(str, example.nl_ids))))
 
     def __len__(self):

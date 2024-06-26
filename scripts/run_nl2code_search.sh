@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-data_dir=data/nl2code
-result_dir="eval_results"
+#data_dir=data/nl2code
+#result_dir="eval_results"
+
+data_dir="/mnt/efs/people/dejiaoz/universal_embedding/evaluation/nl2code/"
+result_dir="/mnt/efs/people/dejiaoz/experiments/results/next/embedding/nl2code/"
 
 export model_name_or_path=${1:-"codesage-small"} # codesage-small, codesage-base, codesage-large
 export dataset=${2:-"cosqa"}
