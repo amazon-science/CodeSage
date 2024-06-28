@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ```
 
 ## Note
-### CodeSage has been trained with block-attention. It requires appending the 'EOS' token at the end of each sequence to ensure good performance. Below is an example of downloading the model and tokenizer. 
+CodeSage has been trained with block-attention. It requires appending the *EOS* token at the end of each sequence to ensure good performance. Below is an example of downloading the model and tokenizer. 
 
 ```angular2html
 model = AutoModel.from_pretrained("codesage/codesage-small", trust_remote_code=True)
