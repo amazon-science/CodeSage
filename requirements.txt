@@ -1,5 +1,5 @@
 torch==1.13.0
-transformers==4.28.1
+transformers==4.38.0
 sentencepiece
 datasets
 scikit-learn
